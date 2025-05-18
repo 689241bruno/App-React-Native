@@ -7,7 +7,7 @@ export default function Signin(){
     return(
         <View style={styles.container}>
             <Animatable.View animation={"fadeInLeft"} delay={500} style={styles.containerHeader}>
-                <Text style={styles.message}>Bem-vindo(a)</Text>
+                <Text style={styles.message}>Entrar</Text>
             </Animatable.View>
 
             <Animatable.View animation={"fadeInUp"} style={styles.containerForm}>
@@ -32,7 +32,7 @@ export default function Signin(){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#38a69d',
+        backgroundColor: '#1179E8',
     },
     containerHeader: {
         marginTop: '14%',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     button: {
-        backgroundColor: '#38a69d',
+        backgroundColor: '#1179E8',
         width: '100%',
         borderRadius: 4,
         paddingVertical: 8,

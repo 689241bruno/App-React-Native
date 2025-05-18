@@ -11,18 +11,22 @@ export default function Welcome(){
             <View style={styles.conatinerLogo}>
                 <Animatable.Image 
                     animation={"flipInY"}
-                    source={require("../../assets/logo.png")}
-                    style={{width: "100%"}}
+                    source={require("../../assets/Aracore.png")}
+                    style={{width: "65%"}}
                     resizeMode='contain'
                 />
             </View>
 
             <Animatable.View delay={600} animation={"fadeInUp"} style={styles.conatinerForm}>
-                <Text style={styles.title}>Monitore, organize seus gastos de qualquer lugar!</Text>
-                <Text style={styles.text}>Faça o login para começar</Text>
+                <Text style={styles.title}>Seja bem vindo ao Aracore!</Text>
+                <Text style={styles.text}>Aqui, estudar para o ENEM é leve, divertido e do seu jeito! Nosso objetivo é te ajudar a mandar bem nas provas com conteúdos dinâmicos, desafios e muito incentivo</Text>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signin')}>
-                    <Text style={styles.buttonText}>Acessar</Text>
+                    <Text style={styles.buttonText}>Entra</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signin')}>
+                    <Text style={styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
             </Animatable.View>
         </View> 
@@ -32,10 +36,10 @@ export default function Welcome(){
 const styles = StyleSheet.create({
     conatiner: {
         flex: 1,
-        backgroundColor: "#38a69d",
+        backgroundColor: "#1179E8",
 
     }, conatinerLogo: {
-        flex:2,
+        flex:1.3,
         justifyContent: "center",
         alignItems: "center",
     }, conatinerForm: {
@@ -43,21 +47,23 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF",
         borderTopLeftRadius: 25, 
         borderTopRightRadius: 25, 
-        padding: "5%",  
+        padding: 20,  
+        alignContent: "center",
     }, title: {
         fontSize: 24, 
         fontWeight: "bold",
         marginBottom: 18,
-    }, text: {
-        color: "#a1a1a1",
-    }, button: {
-        position: "absolute",
-        backgroundColor: "#38a69d",
-        borderRadius: 50,
-        paddingVertical: 8,
-        width: "60%",
         alignSelf: "center",
-        bottom: "15%",
+    }, text: {
+        color: "dark-gray",
+        textAlign: "center",
+    }, button: {
+        backgroundColor: "#1179E8",
+        borderRadius: 30,
+        paddingVertical: 8,
+        width: "70%",
+        alignSelf: "center",
+        marginTop: "10%",
         alignItems: "center",
         justifyContent: "center",
     }, buttonText:{

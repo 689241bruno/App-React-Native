@@ -14,18 +14,21 @@ import axios from "axios";
 
 export default function Signin() {
   const navigation = useNavigation();
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   const handleSubmit = () => {
     axios
-      .post("http://192.168.0.182:3000/login", {
+      .post("http://192.168.0.182:3000/usuarios", {
+        nome: nome,
         email: email,
         senha: senha,
       })
       .then((response) => {
         console.log(response.data);
-        console.log("logado com sucesso!!");
+        console.log("funcionou");
+        setNome("");
         setEmail("");
         setSenha("");
       })
@@ -38,7 +41,7 @@ export default function Signin() {
   return (
     <View style={styles.container}>
       <Animatable.View animation={"fadeInUp"} delay={100} style={styles.header}>
-        <Text style={styles.header}>Login</Text>
+        <Text style={styles.header}>Cadastro</Text>
       </Animatable.View>
 
       <Animatable.View
@@ -46,6 +49,15 @@ export default function Signin() {
         animation={"fadeInUp"}
         delay={300}
       >
+        <View style={styles.containerInput}>
+          <Text style={styles.title}>Nome</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="username"
+            value={nome}
+            onChangeText={setNome}
+          />
+        </View>
         <View style={styles.containerInput}>
           <Text style={styles.title}>Email</Text>
           <TextInput
@@ -66,12 +78,12 @@ export default function Signin() {
           />
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
-          <Text style={styles.link}>Não possui uma conta? Cadastra-se</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
+          <Text style={styles.link}>Já possui uma conta? Entrar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnAcessar} onPress={handleSubmit}>
-          <Text style={styles.btnTextAcessar}>Acessar</Text>
+          <Text style={styles.btnTextAcessar}>Confirmar</Text>
         </TouchableOpacity>
       </Animatable.View>
     </View>
@@ -98,7 +110,7 @@ const styles = StyleSheet.create({
   containerForm: {
     backgroundColor: "white",
     width: "80%",
-    height: 500,
+    height: 600,
     padding: 30,
     borderRadius: 15,
     elevation: 5,

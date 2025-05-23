@@ -19,22 +19,35 @@ export default function Signin() {
   const [senha, setSenha] = useState("");
 
   const handleSubmit = () => {
+    const emailLimpo = email.trim().toLowerCase();
+    const senhaLimpa = senha.trim();
+    const nomeLimpo = nome.trim();
+
+    if (!emailLimpo || !senhaLimpa || !nomeLimpo) {
+      alert("Preencha todos os campos corretamente.");
+      return;
+    }
+
+    if (!emailLimpo.includes("@") || !emailLimpo.includes(".")) {
+      alert("Email inválido.");
+      return;
+    }
     axios
       .post("http://192.168.0.182:3000/usuarios", {
-        nome: nome,
-        email: email,
-        senha: senha,
+        nome: nomeLimpo,
+        email: emailLimpo,
+        senha: senhaLimpa,
       })
       .then((response) => {
         console.log(response.data);
-        console.log("funcionou");
         setNome("");
         setEmail("");
         setSenha("");
+        alert("Usuário Cadastrado!");
+        navigation.navigate("Signin");
       })
       .catch((error) => {
         console.error("Erro na API:", error);
-        console.log("n foi");
       });
   };
 
@@ -65,6 +78,7 @@ export default function Signin() {
             placeholder="yourname@emai.com"
             value={email}
             onChangeText={setEmail}
+            autoCapitalize="none"
           />
         </View>
 

@@ -18,6 +18,18 @@ export default function Signin() {
   const [senha, setSenha] = useState("");
 
   const handleSubmit = () => {
+    const emailLimpo = email.trim().toLowerCase();
+    const senhaLimpa = senha.trim();
+
+    if (!emailLimpo || !senhaLimpa) {
+      alert("Preencha todos os campos corretamente.");
+      return;
+    }
+
+    if (!emailLimpo.includes("@") || !emailLimpo.includes(".")) {
+      alert("Email inválido.");
+      return;
+    }
     axios
       .post("http://192.168.0.182:3000/login", {
         email: email,
@@ -25,13 +37,12 @@ export default function Signin() {
       })
       .then((response) => {
         console.log(response.data);
-        console.log("logado com sucesso!!");
         setEmail("");
         setSenha("");
+        alert("Usuário logado!");
       })
       .catch((error) => {
         console.error("Erro na API:", error);
-        console.log("n foi");
       });
   };
 
@@ -50,9 +61,10 @@ export default function Signin() {
           <Text style={styles.title}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="yourname@emai.com"
+            placeholder="yourname@email.com"
             value={email}
             onChangeText={setEmail}
+            autoCapitalize="none"
           />
         </View>
 

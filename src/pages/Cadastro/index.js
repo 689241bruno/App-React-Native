@@ -33,7 +33,7 @@ export default function Signin() {
       return;
     }
     axios
-        // API publicada no Railway - Banco de dados do Neon
+      // API publicada no Railway - Banco de dados do Neon
       .post("https://apipostgresql-production.up.railway.app/usuarios", {
         nome: nomeLimpo,
         email: emailLimpo,
@@ -91,6 +91,7 @@ export default function Signin() {
             value={senha}
             onChangeText={setSenha}
             autoCapitalize="none"
+            secureTextEntry={true}
           />
         </View>
 

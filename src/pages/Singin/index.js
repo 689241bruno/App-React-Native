@@ -31,16 +31,17 @@ export default function Signin() {
       return;
     }
     axios
-    // API publicada no Railway - Banco de dados do Neon
+      // API publicada no Railway - Banco de dados do Neon
       .post("https://apipostgresql-production.up.railway.app/login", {
-        email: email,
-        senha: senha,
+        email: emailLimpo,
+        senha: senhaLimpa,
       })
       .then((response) => {
         console.log(response.data);
         setEmail("");
         setSenha("");
         alert("Usuário logado!");
+        navigation.navigate("Usuarios");
       })
       .catch((error) => {
         console.error("Erro na API:", error);
@@ -77,6 +78,7 @@ export default function Signin() {
             value={senha}
             onChangeText={setSenha}
             autoCapitalize="none"
+            secureTextEntry={true}
           />
         </View>
 

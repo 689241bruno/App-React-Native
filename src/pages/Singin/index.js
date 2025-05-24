@@ -45,6 +45,7 @@ export default function Signin() {
       })
       .catch((error) => {
         console.error("Erro na API:", error);
+        alert("Algo deu erado!");
       });
   };
 

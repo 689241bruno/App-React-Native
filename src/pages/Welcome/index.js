@@ -38,7 +38,7 @@ export default function Welcome() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Signin")}
+          onPress={() => navigation.navigate("Cadastro")}
         >
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>

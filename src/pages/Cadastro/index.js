@@ -33,7 +33,8 @@ export default function Signin() {
       return;
     }
     axios
-      .post("http://192.168.0.182:3000/usuarios", {
+        // API publicada no Railway - Banco de dados do Neon
+      .post("https://apipostgresql-production.up.railway.app/usuarios", {
         nome: nomeLimpo,
         email: emailLimpo,
         senha: senhaLimpa,
@@ -89,6 +90,7 @@ export default function Signin() {
             placeholder="password"
             value={senha}
             onChangeText={setSenha}
+            autoCapitalize="none"
           />
         </View>
 

@@ -1,12 +1,21 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView, Pressable } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Pressable, Image } from "react-native";
 
 export default function Home() {
   function MateriaBox(props) {
     return (
       <View style={props.estilo} backgroundColor={props.color}>
-        <Text style={props.tituloEstilo}>{props.titulo}</Text>
-        <Text style={props.descricaoEstilo}>{props.descricao}</Text>
+        <View style={props.estiloSecaoPrincipal}>
+          <View style={props.estiloSecaoUm}>
+            <Text style={props.tituloEstilo}>{props.titulo}</Text>
+            <Text style={props.descricaoEstilo}>{props.descricao}</Text>
+          </View>
+          <View style={props.estiloSecaoDois}>
+            <Image style={props.estiloImage}>
+
+            </Image>
+          </View>
+        </View>
       </View>
     );
   }
@@ -29,15 +38,71 @@ export default function Home() {
           tituloEstilo={styles.tituloMateria}
           descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
           descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
+
         />
-        <MateriaBox estilo={styles.containerMateria} titulo="Matemática" />
         <MateriaBox
           estilo={styles.containerMateria}
-          titulo="Ciências da Natureza"
+          color="#FFF"
+          titulo="Linguagens"
+          tituloEstilo={styles.tituloMateria}
+          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
+          descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
         />
         <MateriaBox
           estilo={styles.containerMateria}
-          titulo="Ciências Humanas"
+          color="#FFF"
+          titulo="Linguagens"
+          tituloEstilo={styles.tituloMateria}
+          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
+          descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
+        />
+        <MateriaBox
+          estilo={styles.containerMateria}
+          color="#FFF"
+          titulo="Linguagens"
+          tituloEstilo={styles.tituloMateria}
+          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
+          descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
+        />
+        <MateriaBox
+          estilo={styles.containerMateria}
+          color="#FFF"
+          titulo="Linguagens"
+          tituloEstilo={styles.tituloMateria}
+          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
+          descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
+        />
+        <MateriaBox
+          estilo={styles.containerMateria}
+          color="#FFF"
+          titulo="Linguagens"
+          tituloEstilo={styles.tituloMateria}
+          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
+          descricaoEstilo={styles.descricaoMateria}
+          estiloSecaoPrincipal={styles.secaoPrincipal}
+          estiloSecaoUm={styles.secaoUm}
+          estiloSecaoDois={styles.secaoDois}
+          estiloImage={styles.imageMateria}
         />
         <View style={styles.footer}></View>
       </ScrollView>
@@ -87,15 +152,50 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "gray",
     marginBottom: 30,
-    padding: 15,
+    display: "flex",
+    flexDirection: "row",
   },
   tituloMateria: {
     fontSize: 24,
     fontWeight: "bold",
   },
+  secaoPrincipal: {
+    width: "100%",
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+    height: "65%",
+    borderBottomWidth: 2,
+    borderColor: "gray",
+    padding: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  secaoUm: {
+    width: "70%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    padding: 10,
+  },
+  secaoDois: {
+    width: "30%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageMateria: { 
+    height: "80%",
+    width: "80%",
+    backgroundColor: "#696969",
+    borderRadius: 14,
+  },
   descricaoMateria: {
     marginTop: 10,
     color: "#696969",
+
   },
   footer: {
     height: 40,

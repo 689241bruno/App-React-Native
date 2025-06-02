@@ -3,6 +3,7 @@ import Welcome from "../pages/Welcome";
 import Signin from "../pages/Singin";
 import Cadastro from "../pages/Cadastro";
 import Usuarios from "../pages/Usuarios";
+import Home from "../pages/Home";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -28,6 +29,11 @@ export default function Routes() {
       <Stack.Screen
         name="Usuarios"
         component={Usuarios}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

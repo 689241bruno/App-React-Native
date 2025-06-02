@@ -41,7 +41,7 @@ export default function Signin() {
         setEmail("");
         setSenha("");
         alert("Usuário logado!");
-        navigation.navigate("Usuarios");
+        navigation.navigate("Home");
       })
       .catch((error) => {
         console.error("Erro na API:", error);
@@ -83,7 +83,7 @@ export default function Signin() {
           />
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text style={styles.link}>Não possui uma conta? Cadastra-se</Text>
         </TouchableOpacity>
 

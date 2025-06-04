@@ -30,10 +30,9 @@ export default function Home() {
           </Text>
           <Progress.Bar
             progress={props.progresso}
-            width={180}
             height={15}
             color="gray"
-            style={{ borderColor: "gray" }}
+            style={{ borderColor: "gray", width: "55%" }}
           />
           <TouchableOpacity style={props.estiloBotaoTreinar}>
             <Text style={{ color: "white", fontWeight: "bold" }}>Treinar</Text>
@@ -46,11 +45,37 @@ export default function Home() {
   return (
     <View style={styles.conatiner}>
       <View style={styles.header}>
-        <Pressable style={styles.botao}></Pressable>
+        <Pressable style={styles.botao}>
+          <Image
+            source={require("../../assets/trophy.png")}
+            style={{ height: "80%", width: "80%" }}
+          />
+        </Pressable>
 
         <View style={styles.section}>
-          <Pressable style={styles.botao}></Pressable>
-          <Pressable style={styles.botao}></Pressable>
+          <Pressable style={styles.botao}>
+            <Image
+              source={require("../../assets/star.png")}
+              style={{ height: "70%", width: "70%" }}
+            />
+            <Text
+              style={{
+                position: "absolute",
+                fontWeight: "bold",
+                color: "#FFF",
+                fontSize: 10,
+                top: 15,
+              }}
+            >
+              12
+            </Text>
+          </Pressable>
+          <Pressable style={styles.botao}>
+            <Image
+              source={require("../../assets/user.png")}
+              style={{ height: "100%", width: "100%" }}
+            />
+          </Pressable>
         </View>
       </View>
       <ScrollView style={styles.main}>
@@ -130,25 +155,28 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   header: {
+    marginTop: 15,
     width: "100%",
-    height: 80,
+    height: "12%",
     backgroundColor: "#FFF",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 20,
+    padding: 10,
   },
   botao: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: "50%",
-    backgroundColor: "gray",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   section: {
-    width: 150,
+    width: 100,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   main: {
@@ -223,7 +251,7 @@ const styles = StyleSheet.create({
   },
   botaoTreinar: {
     height: "50%",
-    width: 100,
+    width: "25%",
     backgroundColor: "gray",
     borderRadius: 15,
     display: "flex",

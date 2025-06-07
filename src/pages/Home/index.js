@@ -10,38 +10,9 @@ import {
 } from "react-native";
 
 import * as Progress from "react-native-progress";
+import ContainerMateria from "../../components/conatinerMateria";
 
 export default function Home() {
-  function MateriaBox(props) {
-    return (
-      <View style={props.estilo} backgroundColor={props.color}>
-        <View style={props.estiloSecaoPrincipal}>
-          <View style={props.estiloSecaoUm}>
-            <Text style={props.tituloEstilo}>{props.titulo}</Text>
-            <Text style={props.descricaoEstilo}>{props.descricao}</Text>
-          </View>
-          <View style={props.estiloSecaoDois}>
-            <Image style={props.estiloImage}></Image>
-          </View>
-        </View>
-        <View style={props.estiloSecaoSecundaria}>
-          <Text style={{ fontSize: 15, fontWeight: "bold", color: "gray" }}>
-            {props.progressoText}
-          </Text>
-          <Progress.Bar
-            progress={props.progresso}
-            height={15}
-            color="gray"
-            style={{ borderColor: "gray", width: "55%" }}
-          />
-          <TouchableOpacity style={props.estiloBotaoTreinar}>
-            <Text style={{ color: "white", fontWeight: "bold" }}>Treinar</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.conatiner}>
       <View style={styles.header}>
@@ -78,71 +49,12 @@ export default function Home() {
           </Pressable>
         </View>
       </View>
+
       <ScrollView style={styles.main}>
-        <MateriaBox
-          estilo={styles.containerMateria}
-          color="#FFF"
-          titulo="Linguagens"
-          tituloEstilo={styles.tituloMateria}
-          descricao="Lingua Portuguesa e Estrangeira, Arte e  Educação física."
-          descricaoEstilo={styles.descricaoMateria}
-          estiloSecaoPrincipal={styles.secaoPrincipal}
-          estiloSecaoUm={styles.secaoUm}
-          estiloSecaoDois={styles.secaoDois}
-          estiloImage={styles.imageMateria}
-          estiloSecaoSecundaria={styles.secaoSecundaria}
-          estiloBotaoTreinar={styles.botaoTreinar}
-          progresso={0.5}
-          progressoText="50%"
-        />
-        <MateriaBox
-          estilo={styles.containerMateria}
-          color="#FFF"
-          titulo="Matemática"
-          tituloEstilo={styles.tituloMateria}
-          descricao="Matemática aplicada à realidade."
-          descricaoEstilo={styles.descricaoMateria}
-          estiloSecaoPrincipal={styles.secaoPrincipal}
-          estiloSecaoUm={styles.secaoUm}
-          estiloSecaoDois={styles.secaoDois}
-          estiloImage={styles.imageMateria}
-          estiloSecaoSecundaria={styles.secaoSecundaria}
-          estiloBotaoTreinar={styles.botaoTreinar}
-          progresso={0.7}
-          progressoText="70%"
-        />
-        <MateriaBox
-          estilo={styles.containerMateria}
-          color="#FFF"
-          titulo="Ciências Humanas"
-          tituloEstilo={styles.tituloMateria}
-          descricao="Filosofia, Geografia, História e Sociologia."
-          descricaoEstilo={styles.descricaoMateria}
-          estiloSecaoPrincipal={styles.secaoPrincipal}
-          estiloSecaoUm={styles.secaoUm}
-          estiloSecaoDois={styles.secaoDois}
-          estiloImage={styles.imageMateria}
-          estiloSecaoSecundaria={styles.secaoSecundaria}
-          estiloBotaoTreinar={styles.botaoTreinar}
-          progresso={0.3}
-          progressoText="30%"
-        />
-        <MateriaBox
-          estilo={styles.containerMateria}
-          color="#FFF"
-          titulo="Ciências da Natureza"
-          tituloEstilo={styles.tituloMateria}
-          descricao="Biologia Física e Química."
-          descricaoEstilo={styles.descricaoMateria}
-          estiloSecaoPrincipal={styles.secaoPrincipal}
-          estiloSecaoUm={styles.secaoUm}
-          estiloSecaoDois={styles.secaoDois}
-          estiloImage={styles.imageMateria}
-          estiloSecaoSecundaria={styles.secaoSecundaria}
-          estiloBotaoTreinar={styles.botaoTreinar}
-          progresso={0.4}
-          progressoText="40%"
-        />
+        <ContainerMateria />
+        <ContainerMateria />
+        <ContainerMateria />
+        <ContainerMateria />
         <View style={styles.footer}></View>
       </ScrollView>
     </View>
@@ -155,9 +67,9 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   header: {
-    marginTop: 15,
+    marginTop: 30,
     width: "100%",
-    height: "12%",
+    height: "7%",
     backgroundColor: "#FFF",
     flexDirection: "row",
     justifyContent: "space-between",

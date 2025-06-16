@@ -1,25 +1,38 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 
-export default function ContainerMateria(Props) {
-  const progresso = Props.progress * 100;
+const imagens = {
+  Linguagens: require("../../assets/pilha-de-livros.png"),
+  Matemática: require("../../assets/matematica.png"),
+  CiênciasdaNatureza: require("../../assets/ambiental.png"),
+  CiênciasHumanas: require("../../assets/livro-de-historia.png"),
+  Redação: require("../../assets/redacao.png"),
+};
+
+export default function ContainerMateria(props) {
+  const progresso = props.progress * 100;
+
   return (
     <View style={styles.containerMateria}>
       <View style={styles.secaoPrincipal}>
         <View style={styles.secaoUm}>
-          <Text style={styles.tituloMateria}>{Props.titulo}</Text>
+          <Text style={styles.tituloMateria}>{props.titulo}</Text>
           <Text style={styles.descricaoMateria}>
             Complete os exercícios e ganhe pontos!
           </Text>
         </View>
         <View style={styles.secaoDois}>
-          <Image style={styles.imageMateria}></Image>
+          <Image
+            style={styles.imageMateria}
+            source={imagens[props.nomeImage]}
+            resizeMode="contain"
+          ></Image>
         </View>
       </View>
       <View style={styles.secaoSecundaria}>
         <Text>{progresso}%</Text>
         <Progress.Bar
-          progress={Props.progress}
+          progress={props.progress}
           height={15}
           color="gray"
           style={{ borderColor: "gray", width: 150 }}
@@ -50,6 +63,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 14,
     height: "70%",
     borderBottomWidth: 2,
+    backgroundColor: "white",
     borderColor: "gray",
     padding: 10,
     display: "flex",
@@ -74,7 +88,6 @@ const styles = StyleSheet.create({
   imageMateria: {
     height: "80%",
     width: "80%",
-    backgroundColor: "#696969",
     borderRadius: 14,
   },
   descricaoMateria: {

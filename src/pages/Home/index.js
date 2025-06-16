@@ -51,11 +51,27 @@ export default function Home() {
       </View>
 
       <ScrollView style={styles.main}>
-        <ContainerMateria titulo="Linguagens" progress={0.7} />
-        <ContainerMateria titulo="Matemática" progress={0.5} />
-        <ContainerMateria titulo="Ciências da Natureza" progress={0.1} />
-        <ContainerMateria titulo="Ciências Humanas" progress={0.8} />
-        <ContainerMateria titulo="Redação" progress={0.4} />
+        <ContainerMateria
+          titulo="Linguagens"
+          progress={0.7}
+          nomeImage="Linguagens"
+        />
+        <ContainerMateria
+          titulo="Matemática"
+          progress={0.5}
+          nomeImage="Matemática"
+        />
+        <ContainerMateria
+          titulo="Ciências da Natureza"
+          progress={0.1}
+          nomeImage="CiênciasdaNatureza"
+        />
+        <ContainerMateria
+          titulo="Ciências Humanas"
+          progress={0.8}
+          nomeImage="CiênciasHumanas"
+        />
+        <ContainerMateria titulo="Redação" progress={0.4} nomeImage="Redação" />
         <View style={styles.footer}></View>
       </ScrollView>
     </View>

@@ -1,5 +1,8 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
+import Constants from "expo-constants";
+
+const statusBarHeight = Constants.statusBarHeight;
 
 const imagens = {
   Linguagens: require("../../assets/pilha-de-livros.png"),
@@ -97,7 +100,8 @@ const styles = StyleSheet.create({
   secaoSecundaria: {
     alignSelf: "center",
     height: "35%",
-    width: "80%",
+    width: "100%",
+    backgroundColor: "white",
     borderBottomLeftRadius: 14,
     borderBottomRightRadius: 14,
     display: "flex",

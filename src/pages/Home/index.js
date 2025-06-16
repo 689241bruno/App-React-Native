@@ -11,9 +11,17 @@ import {
 
 import * as Progress from "react-native-progress";
 import ContainerMateria from "../../components/conatinerMateria";
+import { useNavigation } from "@react-navigation/native";
+
+import Constants from "expo-constants";
+
+const statusBarHeight = Constants.statusBarHeight;
+
 
 export default function Home() {
+  const navigation = useNavigation();
   return (
+    
     <View style={styles.conatiner}>
       <View style={styles.header}>
         <Pressable style={styles.botao}>
@@ -41,7 +49,7 @@ export default function Home() {
               12
             </Text>
           </Pressable>
-          <Pressable style={styles.botao}>
+          <Pressable style={styles.botao} onPress={() => navigation.navigate("Perfil")}>
             <Image
               source={require("../../assets/user.png")}
               style={{ height: "100%", width: "100%" }}
@@ -82,11 +90,12 @@ const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
     paddingBottom: 30,
+    backgroundColor: "#338BE5",
   },
   header: {
-    marginTop: 30,
+    marginTop: statusBarHeight,
     width: "100%",
-    height: "7%",
+    height: 50,
     backgroundColor: "#FFF",
     flexDirection: "row",
     justifyContent: "space-between",

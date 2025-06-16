@@ -4,6 +4,7 @@ import Signin from "../pages/Singin";
 import Cadastro from "../pages/Cadastro";
 import Usuarios from "../pages/Usuarios";
 import Home from "../pages/Home";
+import Perfil from "../pages/Perfil";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -34,6 +35,12 @@ export default function Routes() {
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="Perfil"
+        component={Perfil}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

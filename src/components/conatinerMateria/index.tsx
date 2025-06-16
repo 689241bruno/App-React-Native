@@ -1,12 +1,13 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
 
-export default function ContainerMateria() {
+export default function ContainerMateria(Props) {
+  const progresso = Props.progress * 100;
   return (
     <View style={styles.containerMateria}>
       <View style={styles.secaoPrincipal}>
         <View style={styles.secaoUm}>
-          <Text style={styles.tituloMateria}>Matemática</Text>
+          <Text style={styles.tituloMateria}>{Props.titulo}</Text>
           <Text style={styles.descricaoMateria}>
             Complete os exercícios e ganhe pontos!
           </Text>
@@ -16,16 +17,13 @@ export default function ContainerMateria() {
         </View>
       </View>
       <View style={styles.secaoSecundaria}>
-        <Text>70%</Text>
+        <Text>{progresso}%</Text>
         <Progress.Bar
-          progress={70}
+          progress={Props.progress}
           height={15}
           color="gray"
-          style={{ borderColor: "gray", width: "55%" }}
+          style={{ borderColor: "gray", width: 150 }}
         />
-        <TouchableOpacity style={styles.botaoTreinar}>
-          <Text style={{ color: "white", fontWeight: "bold" }}>Treinar</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -43,14 +41,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   tituloMateria: {
-    fontSize: 24,
+    fontSize: 21,
     fontWeight: "bold",
   },
   secaoPrincipal: {
     width: "100%",
     borderTopLeftRadius: 14,
     borderTopRightRadius: 14,
-    height: "65%",
+    height: "70%",
     borderBottomWidth: 2,
     borderColor: "gray",
     padding: 10,
@@ -84,13 +82,14 @@ const styles = StyleSheet.create({
     color: "#696969",
   },
   secaoSecundaria: {
+    alignSelf: "center",
     height: "35%",
-    width: "100%",
+    width: "80%",
     borderBottomLeftRadius: 14,
     borderBottomRightRadius: 14,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     paddingRight: 15,
     paddingLeft: 15,

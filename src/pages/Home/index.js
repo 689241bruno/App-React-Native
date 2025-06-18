@@ -12,18 +12,21 @@ import {
 import * as Progress from "react-native-progress";
 import ContainerMateria from "../../components/conatinerMateria";
 import { useNavigation } from "@react-navigation/native";
+import * as Animatable from "react-native-animatable";
 
 import Constants from "expo-constants";
 
 const statusBarHeight = Constants.statusBarHeight;
 
-
 export default function Home() {
   const navigation = useNavigation();
   return (
-    
     <View style={styles.conatiner}>
-      <View style={styles.header}>
+      <Animatable.View
+        delay={300}
+        animation={"fadeInDown"}
+        style={styles.header}
+      >
         <Pressable style={styles.botao}>
           <Image
             source={require("../../assets/trophy.png")}
@@ -49,35 +52,42 @@ export default function Home() {
               12
             </Text>
           </Pressable>
-          <Pressable style={styles.botao} onPress={() => navigation.navigate("Perfil")}>
+          <Pressable
+            style={styles.botao}
+            onPress={() => navigation.navigate("Perfil")}
+          >
             <Image
               source={require("../../assets/user.png")}
               style={{ height: "100%", width: "100%" }}
             />
           </Pressable>
         </View>
-      </View>
+      </Animatable.View>
 
       <ScrollView style={styles.main}>
         <ContainerMateria
           titulo="Linguagens"
           progress={0.7}
           nomeImage="Linguagens"
+          delayanim={400}
         />
         <ContainerMateria
           titulo="Matemática"
           progress={0.5}
           nomeImage="Matemática"
+          delayanim={480}
         />
         <ContainerMateria
           titulo="Ciências da Natureza"
           progress={0.1}
           nomeImage="CiênciasdaNatureza"
+          delayanim={560}
         />
         <ContainerMateria
           titulo="Ciências Humanas"
           progress={0.8}
           nomeImage="CiênciasHumanas"
+          delayanim={640}
         />
         <ContainerMateria titulo="Redação" progress={0.4} nomeImage="Redação" />
         <View style={styles.footer}></View>
@@ -89,18 +99,18 @@ export default function Home() {
 const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
-    paddingBottom: 30,
     backgroundColor: "#338BE5",
   },
   header: {
     marginTop: statusBarHeight,
     width: "100%",
-    height: 50,
+    height: 60,
     backgroundColor: "#FFF",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 10,
+    elevation: 5,
   },
   botao: {
     width: 40,
@@ -119,6 +129,7 @@ const styles = StyleSheet.create({
   },
   main: {
     padding: 30,
+    paddingTop: 60,
     display: "flex",
     flexDirection: "column",
   },
@@ -199,6 +210,6 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   footer: {
-    height: 40,
+    height: 90,
   },
 });

@@ -1,8 +1,6 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import * as Progress from "react-native-progress";
-import Constants from "expo-constants";
-
-const statusBarHeight = Constants.statusBarHeight;
+import * as Animatable from "react-native-animatable";
 
 const imagens = {
   Linguagens: require("../../assets/pilha-de-livros.png"),
@@ -16,7 +14,11 @@ export default function ContainerMateria(props) {
   const progresso = props.progress * 100;
 
   return (
-    <View style={styles.containerMateria}>
+    <Animatable.View
+      delay={props.delayanim}
+      animation={"fadeInUp"}
+      style={styles.containerMateria}
+    >
       <View style={styles.secaoPrincipal}>
         <View style={styles.secaoUm}>
           <Text style={styles.tituloMateria}>{props.titulo}</Text>
@@ -37,11 +39,11 @@ export default function ContainerMateria(props) {
         <Progress.Bar
           progress={props.progress}
           height={15}
-          color="gray"
+          color="green"
           style={{ borderColor: "gray", width: 150 }}
         />
       </View>
-    </View>
+    </Animatable.View>
   );
 }
 const styles = StyleSheet.create({
@@ -51,10 +53,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: "gray",
+    borderColor: "white",
     marginBottom: 30,
     display: "flex",
     flexDirection: "column",
+    elevation: 5,
+    backgroundColor: "white",
   },
   tituloMateria: {
     fontSize: 21,
@@ -99,27 +103,17 @@ const styles = StyleSheet.create({
   },
   secaoSecundaria: {
     alignSelf: "center",
-    height: "35%",
+    height: "30%",
     width: "100%",
-    backgroundColor: "white",
-    borderBottomLeftRadius: 14,
-    borderBottomRightRadius: 14,
+    borderRadius: 14,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     paddingRight: 15,
     paddingLeft: 15,
-  },
-  botaoTreinar: {
-    height: "50%",
-    width: "25%",
-    backgroundColor: "gray",
-    borderRadius: 15,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    elevation: 5,
+    backgroundColor: "white",
   },
 });

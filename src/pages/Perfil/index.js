@@ -9,12 +9,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-
-
-export default function Perfil(){
-    return(
-        <View>
-                
-        </View>
-    );
+export default function Perfil() {
+  return (
+    <ScrollView>
+      <View></View>
+    </ScrollView>
+  );
 }

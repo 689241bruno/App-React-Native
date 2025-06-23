@@ -23,7 +23,7 @@ export default function ContainerMateria(props) {
         <View style={styles.secaoUm}>
           <Text style={styles.tituloMateria}>{props.titulo}</Text>
           <Text style={styles.descricaoMateria}>
-            Complete os exercícios e ganhe pontos!
+            {props.descricao}
           </Text>
         </View>
         <View style={styles.secaoDois}>

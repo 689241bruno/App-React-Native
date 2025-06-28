@@ -1,18 +1,61 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React, { useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Animated,
+  Dimensions,
+} from "react-native";
 import * as Animatable from "react-native-animatable";
-
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import Cloud from "../../components/Nuvem.js";
 
 export default function Welcome() {
   const navigation = useNavigation();
+
   return (
-    <View style={styles.conatiner}>
+    <LinearGradient colors={["#67A4FF", "#FFFFFF"]} style={styles.conatiner}>
+      <Cloud
+        top={130}
+        size={200}
+        duration={25000}
+        source={require("../../assets/nuvem-1.png")}
+        direction="right"
+        delay={800}
+      />
+
+      <Cloud
+        top={200}
+        size={200}
+        duration={23000}
+        delay={0}
+        source={require("../../assets/nuvem-2.png")}
+        direction="left"
+      />
+
+      <Cloud
+        top={50}
+        size={170}
+        duration={28000}
+        source={require("../../assets/nuvem-3.png")}
+        direction="right"
+        delay={1200}
+      />
+
       <View style={styles.conatinerLogo}>
         <Animatable.Image
-          animation={"flipInY"}
-          source={require("../../assets/Aracore.png")}
-          style={{ width: "65%" }}
+          delay={600}
+          animation={"fadeInUp"}
+          source={require("../../assets/macawdemy-logo-asa-levantada.png")}
+          style={{
+            position: "absolute",
+            top: 0,
+            height: 300,
+            backgroundColor: "transparent",
+          }}
           resizeMode="contain"
         />
       </View>
@@ -22,66 +65,76 @@ export default function Welcome() {
         animation={"fadeInUp"}
         style={styles.conatinerForm}
       >
-        <Text style={styles.title}>Seja bem vindo ao Aracore!</Text>
+        <Text style={styles.title}>Seja bem vindo ao Macawdemy!</Text>
         <Text style={styles.text}>
-          Aqui, estudar para o ENEM é leve, divertido e do seu jeito! Nosso
-          objetivo é te ajudar a mandar bem nas provas com conteúdos dinâmicos,
-          desafios e muito incentivo
+          Aqui, estudar é leve, divertido e do seu jeito! Nosso objetivo é te
+          ajudar a mandar bem nas provas com conteúdos dinâmicos, desafios e
+          muito incentivo
         </Text>
 
         <TouchableOpacity
-          style={styles.button}
+          style={styles.botaoEntrar}
           onPress={() => navigation.navigate("Signin")}
         >
-          <Text style={styles.buttonText}>Entra</Text>
+          <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.button}
+          style={styles.botaoCadastrar}
           onPress={() => navigation.navigate("Cadastro")}
         >
           <Text style={styles.buttonText}>Cadastrar</Text>
         </TouchableOpacity>
       </Animatable.View>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
-    backgroundColor: "#1179E8",
+  },
+  nuvem: {
+    height: 120,
+    width: 200,
+    position: "absolute",
+    backgroundColor: "transparent",
+    marginTop: 150,
   },
   conatinerLogo: {
-    flex: 1.3,
+    height: 265,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 250,
   },
   conatinerForm: {
-    flex: 1,
-    backgroundColor: "#FFF",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    padding: 20,
+    height: 500,
+    backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    padding: 30,
     alignContent: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 18,
+    marginBottom: 0,
     alignSelf: "center",
   },
   text: {
+    fontSize: 14,
     color: "dark-gray",
-    textAlign: "center",
+    textAlign: "left",
+    margin: 10,
   },
-  button: {
+  botaoEntrar: {
     backgroundColor: "#1179E8",
     borderRadius: 30,
     paddingVertical: 8,
     width: "70%",
+    height: 50,
     alignSelf: "center",
-    marginTop: "10%",
+    marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -89,5 +142,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#FFF",
+  },
+  botaoCadastrar: {
+    backgroundColor: "#1179E8",
+    borderRadius: 30,
+    paddingVertical: 8,
+    width: "70%",
+    height: 50,
+    alignSelf: "center",
+    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

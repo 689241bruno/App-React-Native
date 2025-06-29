@@ -79,35 +79,26 @@ export default function Home() {
           progress={0.7}
           nomeImage="Linguagens"
           delayanim={400}
-          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Matemática"
           progress={0.5}
           nomeImage="Matemática"
           delayanim={480}
-          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Ciências da Natureza"
           progress={0.1}
           nomeImage="CiênciasdaNatureza"
           delayanim={560}
-          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Ciências Humanas"
           progress={0.8}
           nomeImage="CiênciasHumanas"
           delayanim={640}
-          descricao="Resolva as questões para ganhar pontos"
         />
-        <ContainerMateria
-          titulo="Redação"
-          progress={0.4}
-          nomeImage="Redação"
-          descricao="Correção feita por IA ou por professores "
-        />
+        <ContainerMateria titulo="Redação" progress={0.4} nomeImage="Redação" />
         <View style={styles.footer}></View>
       </ScrollView>
     </SafeAreaView>

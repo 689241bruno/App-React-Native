@@ -22,9 +22,6 @@ export default function ContainerMateria(props) {
       <View style={styles.secaoPrincipal}>
         <View style={styles.secaoUm}>
           <Text style={styles.tituloMateria}>{props.titulo}</Text>
-          <Text style={styles.descricaoMateria}>
-            {props.descricao}
-          </Text>
         </View>
         <View style={styles.secaoDois}>
           <Image
@@ -35,7 +32,9 @@ export default function ContainerMateria(props) {
         </View>
       </View>
       <View style={styles.secaoSecundaria}>
-        <Text>{progresso}%</Text>
+        <Text style={{ fontSize: 16, fontWeight: "bold", color: "#565656" }}>
+          {progresso}%
+        </Text>
         <Progress.Bar
           progress={props.progress}
           height={15}
@@ -61,8 +60,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   tituloMateria: {
-    fontSize: 21,
+    fontSize: 23,
     fontWeight: "bold",
+    color: "#383838",
   },
   secaoPrincipal: {
     width: "100%",
@@ -70,20 +70,21 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 14,
     height: "70%",
     borderBottomWidth: 2,
-    backgroundColor: "white",
+    backgroundColor: "#FFF",
     borderColor: "gray",
     padding: 10,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-around",
   },
   secaoUm: {
-    width: "70%",
+    width: "50%",
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
-    padding: 10,
+    justifyContent: "center",
+    paddingLeft: 10,
   },
   secaoDois: {
     width: "30%",
@@ -110,10 +111,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 0,
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
     paddingRight: 15,
     paddingLeft: 15,
-    backgroundColor: "white",
+
+    gap: 20,
   },
 });

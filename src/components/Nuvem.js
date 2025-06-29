@@ -13,15 +13,15 @@ export default function Cloud({
   delay = 0,
 }) {
   const translateX = useRef(
-    new Animated.Value(direction === "right" ? -size : width)
+    new Animated.Value(direction === "right" ? -size : 500)
   ).current;
 
   useEffect(() => {
-    translateX.setValue(direction === "right" ? -size : width);
+    translateX.setValue(direction === "right" ? -size : 500);
 
     Animated.loop(
       Animated.timing(translateX, {
-        toValue: direction === "right" ? width : -size,
+        toValue: direction === "right" ? 500 : -size,
         duration,
         delay,
         useNativeDriver: true,

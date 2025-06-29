@@ -17,14 +17,14 @@ export default function Welcome() {
   const navigation = useNavigation();
 
   return (
-    <LinearGradient colors={["#67A4FF", "#FFFFFF"]} style={styles.conatiner}>
+    <LinearGradient colors={["#67A4FF", "#E2EDFF"]} style={styles.conatiner}>
       <Cloud
         top={130}
         size={200}
-        duration={25000}
+        duration={20000}
         source={require("../../assets/nuvem-1.png")}
         direction="right"
-        delay={800}
+        delay={0}
       />
 
       <Cloud
@@ -39,10 +39,10 @@ export default function Welcome() {
       <Cloud
         top={50}
         size={170}
-        duration={28000}
+        duration={30000}
         source={require("../../assets/nuvem-3.png")}
         direction="right"
-        delay={1200}
+        delay={0}
       />
 
       <View style={styles.conatinerLogo}>
@@ -74,7 +74,7 @@ export default function Welcome() {
 
         <TouchableOpacity
           style={styles.botaoEntrar}
-          onPress={() => navigation.navigate("Signin")}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   botaoEntrar: {
-    backgroundColor: "#1179E8",
+    backgroundColor: "#FFC31C",
     borderRadius: 30,
     paddingVertical: 8,
     width: "70%",

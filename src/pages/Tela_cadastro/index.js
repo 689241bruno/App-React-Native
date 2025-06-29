@@ -34,7 +34,7 @@ export default function Signin() {
     }
     axios
       // API publicada no Railway - Banco de dados do Neon
-      .post("https://apipostgresql-production.up.railway.app/usuarios", {
+      .post("https://apirailway-production-07cc.up.railway.app/usuarios", {
         nome: nomeLimpo,
         email: emailLimpo,
         senha: senhaLimpa,
@@ -45,7 +45,7 @@ export default function Signin() {
         setEmail("");
         setSenha("");
         alert("Usuário Cadastrado!");
-        navigation.navigate("Signin");
+        navigation.navigate("Login");
       })
       .catch((error) => {
         console.error("Erro na API:", error);
@@ -96,7 +96,7 @@ export default function Signin() {
           />
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.link}>Já possui uma conta? Entrar</Text>
         </TouchableOpacity>
 

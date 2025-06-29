@@ -7,10 +7,11 @@ import {
   Pressable,
   Image,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 
 import * as Progress from "react-native-progress";
-import ContainerMateria from "../../components/conatinerMateria";
+import ContainerMateria from "../../components/containerMateria";
 import { useNavigation } from "@react-navigation/native";
 import * as Animatable from "react-native-animatable";
 
@@ -21,7 +22,7 @@ const statusBarHeight = Constants.statusBarHeight;
 export default function Home() {
   const navigation = useNavigation();
   return (
-    <View style={styles.conatiner}>
+    <SafeAreaView style={styles.conatiner}>
       <Animatable.View
         delay={300}
         animation={"fadeInDown"}
@@ -33,16 +34,25 @@ export default function Home() {
             style={{ height: "80%", width: "80%" }}
           />
         </Pressable>
-          <Pressable
-            style={styles.botao}
-            onPress={() => navigation.navigate("Perfil")}
+        <Pressable
+          style={styles.botao}
+          onPress={() => navigation.navigate("Perfil")}
+        >
+          <Image
+            source={require("../../assets/user.png")}
+            style={{ height: "100%", width: "100%" }}
+          />
+          <View
+            style={{
+              position: "absolute",
+              height: 20,
+              width: 20,
+              bottom: 0,
+              left: 0,
+              display: "flex",
+              alignItems: "center",
+            }}
           >
-            
-            <Image
-              source={require("../../assets/user.png")}
-              style={{ height: "100%", width: "100%" }}
-            />
-            <View style={{ position: "absolute", height: 20, width: 20, bottom: 0, left: 0, display: "flex", alignItems:"center"}}>
             <Image
               source={require("../../assets/star.png")}
               style={{ height: 20, width: 20 }}
@@ -54,13 +64,13 @@ export default function Home() {
                 color: "#FFF",
                 alignSelf: "center",
                 fontSize: 8,
-                top: 5
+                top: 5,
               }}
             >
               12
             </Text>
-            </View>
-          </Pressable>
+          </View>
+        </Pressable>
       </Animatable.View>
 
       <ScrollView style={styles.main}>
@@ -69,33 +79,38 @@ export default function Home() {
           progress={0.7}
           nomeImage="Linguagens"
           delayanim={400}
-          descricao="Complete os exercícios para ganhar pontos"
+          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Matemática"
           progress={0.5}
           nomeImage="Matemática"
           delayanim={480}
-          descricao="complete os exercícios para ganhar pontos"
+          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Ciências da Natureza"
           progress={0.1}
           nomeImage="CiênciasdaNatureza"
           delayanim={560}
-          descricao="complete os exercícios para ganhar pontos"
+          descricao="Resolva as questões para ganhar pontos"
         />
         <ContainerMateria
           titulo="Ciências Humanas"
           progress={0.8}
           nomeImage="CiênciasHumanas"
           delayanim={640}
-          descricao="complete os exercícios para ganhar pontos"
+          descricao="Resolva as questões para ganhar pontos"
         />
-        <ContainerMateria titulo="Redação" progress={0.4} nomeImage="Redação" />
+        <ContainerMateria
+          titulo="Redação"
+          progress={0.4}
+          nomeImage="Redação"
+          descricao="Correção feita por IA ou por professores "
+        />
         <View style={styles.footer}></View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -105,7 +120,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#338BE5",
   },
   header: {
-    marginTop: statusBarHeight,
     width: "100%",
     height: 60,
     backgroundColor: "#FFF",
@@ -129,7 +143,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "red"
+    backgroundColor: "red",
   },
   main: {
     padding: 30,

@@ -1,24 +1,24 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Welcome from "../pages/Welcome";
-import Signin from "../pages/Singin";
-import Cadastro from "../pages/Cadastro";
+import Inicial from "../pages/Tela_inicial";
+import Login from "../pages/Tela_login";
+import Cadastro from "../pages/Tela_cadastro";
 import Usuarios from "../pages/Usuarios";
-import Home from "../pages/Home";
-import Perfil from "../pages/Perfil";
+import Principal from "../pages/Tela_principal";
+import Perfil from "../pages/Tela_perfil_usuario";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Welcome"
-        component={Welcome}
+        name="Inicial"
+        component={Inicial}
         options={{ headerShown: false }}
       />
 
       <Stack.Screen
-        name="Signin"
-        component={Signin}
+        name="Login"
+        component={Login}
         options={{ headerShown: false }}
       />
 
@@ -33,8 +33,8 @@ export default function Routes() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="Principal"
+        component={Principal}
         options={{ headerShown: false }}
       />
 

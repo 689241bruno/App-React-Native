@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { TextInput } from "react-native-paper";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
@@ -13,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 
 export default function Signin() {
+  const [oculto, setOculto] = React.useState(true);
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -60,26 +57,43 @@ export default function Signin() {
         animation={"fadeInUp"}
         delay={300}
       >
+        <View style={{ width: "100%", height: 20 }}>
+          <View
+            style={{
+              height: 2,
+              width: "100%",
+              backgroundColor: "gray",
+            }}
+          />
+          <Text>ou</Text>
+        </View>
         <View style={styles.containerInput}>
-          <Text style={styles.title}>Email</Text>
           <TextInput
-            style={styles.input}
-            placeholder="yourname@email.com"
+            label="Email"
             value={email}
             onChangeText={setEmail}
+            keyboardType="email-address"
+            mode="outlined"
             autoCapitalize="none"
+            left={<TextInput.Icon icon="email" />}
+            error={!email.includes("@") && email !== ""}
+            activeOutlineColor="black"
           />
-        </View>
-
-        <View style={styles.containerInput}>
-          <Text style={styles.title}>Senha</Text>
           <TextInput
-            style={styles.input}
-            placeholder="password"
+            label="Senha"
             value={senha}
             onChangeText={setSenha}
+            mode="outlined"
             autoCapitalize="none"
-            secureTextEntry={true}
+            secureTextEntry={oculto}
+            right={
+              <TextInput.Icon
+                icon={oculto ? "eye-off" : "eye"}
+                onPress={() => setOculto(!oculto)}
+              />
+            }
+            left={<TextInput.Icon icon="lock" />}
+            activeOutlineColor="black"
           />
         </View>
 
@@ -120,11 +134,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 5,
     justifyContent: "space-around",
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "column",
   },
 
   containerInput: {
     justifyContent: "space-between",
-    height: 80,
+    height: 150,
   },
 
   title: {

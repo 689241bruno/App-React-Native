@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TextInput } from "react-native-paper";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { TextInput, Button } from "react-native-paper";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import * as Animatable from "react-native-animatable";
@@ -57,16 +57,6 @@ export default function Signin() {
         animation={"fadeInUp"}
         delay={300}
       >
-        <View style={{ width: "100%", height: 20 }}>
-          <View
-            style={{
-              height: 2,
-              width: "100%",
-              backgroundColor: "gray",
-            }}
-          />
-          <Text>ou</Text>
-        </View>
         <View style={styles.containerInput}>
           <TextInput
             label="Email"
@@ -104,6 +94,55 @@ export default function Signin() {
         <TouchableOpacity style={styles.btnAcessar} onPress={handleSubmit}>
           <Text style={styles.btnTextAcessar}>Acessar</Text>
         </TouchableOpacity>
+        <View
+          style={{
+            width: "100%",
+          }}
+        >
+          <View
+            style={{
+              height: 2,
+              width: "100%",
+              backgroundColor: "gray",
+            }}
+          />
+          <Text
+            style={{
+              position: "absolute",
+              alignSelf: "center",
+              top: -10,
+              paddingLeft: 5,
+              paddingRight: 5,
+              backgroundColor: "white",
+            }}
+          >
+            ou
+          </Text>
+        </View>
+        <View
+          style={{
+            height: 50,
+            width: "80%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
+        >
+          <Image
+            source={require("../../assets/Google_icone.png")}
+            style={{ width: 35, height: 35 }}
+          />
+          <Image
+            source={require("../../assets/Facebook_icone.png")}
+            style={{ width: 40, height: 40 }}
+          />
+          <Image
+            source={require("../../assets/Microsoft_icone.png")}
+            style={{ width: 30, height: 30 }}
+          />
+        </View>
       </Animatable.View>
     </View>
   );
@@ -127,13 +166,12 @@ const styles = StyleSheet.create({
   },
 
   containerForm: {
-    backgroundColor: "white",
+    backgroundColor: "#FFF",
     width: "80%",
-    height: 500,
+    height: 600,
     padding: 30,
     borderRadius: 15,
     elevation: 5,
-    justifyContent: "space-around",
     display: "flex",
     justifyContent: "space-around",
     flexDirection: "column",

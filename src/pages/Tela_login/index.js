@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Checkbox } from "react-native-paper";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 
 import axios from "axios";
 
 export default function Signin() {
+  const [checked, setChecked] = React.useState(false);
   const [oculto, setOculto] = React.useState(true);
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
@@ -47,139 +48,108 @@ export default function Signin() {
   };
 
   return (
-    <View style={styles.container}>
+    <Animatable.View
+      animation={"fadeInUp"}
+      delay={300}
+      style={styles.container}
+    >
       <Animatable.View animation={"fadeInUp"} delay={100} style={styles.header}>
-        <Text style={styles.header}>Login</Text>
-      </Animatable.View>
-
-      <Animatable.View
-        style={styles.containerForm}
-        animation={"fadeInUp"}
-        delay={300}
-      >
-        <View style={styles.containerInput}>
-          <TextInput
-            label="Email"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            mode="outlined"
-            autoCapitalize="none"
-            left={<TextInput.Icon icon="email" />}
-            error={!email.includes("@") && email !== ""}
-            activeOutlineColor="black"
-          />
-          <TextInput
-            label="Senha"
-            value={senha}
-            onChangeText={setSenha}
-            mode="outlined"
-            autoCapitalize="none"
-            secureTextEntry={oculto}
-            right={
-              <TextInput.Icon
-                icon={oculto ? "eye-off" : "eye"}
-                onPress={() => setOculto(!oculto)}
-              />
-            }
-            left={<TextInput.Icon icon="lock" />}
-            activeOutlineColor="black"
-          />
-        </View>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
-          <Text style={styles.link}>Não possui uma conta?</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.btnAcessar} onPress={handleSubmit}>
-          <Text style={styles.btnTextAcessar}>Acessar</Text>
-        </TouchableOpacity>
-        <View
-          style={{
-            width: "100%",
-          }}
+        <TouchableOpacity
+          style={styles.botaoVoltar}
+          onPress={() => navigation.navigate("Inicial")}
         >
-          <View
-            style={{
-              height: 2,
-              width: "100%",
-              backgroundColor: "gray",
-            }}
-          />
-          <Text
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: -10,
-              paddingLeft: 5,
-              paddingRight: 5,
-              backgroundColor: "white",
-            }}
-          >
-            ou
+          <Text>
+            <MaterialIcons name="chevron_left" size={20} color="white" />
           </Text>
-        </View>
-        <View
-          style={{
-            height: 50,
-            width: "80%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            alignSelf: "center",
-          }}
-        >
-          <Image
-            source={require("../../assets/Google_icone.png")}
-            style={{ width: 35, height: 35 }}
-          />
-          <Image
-            source={require("../../assets/Facebook_icone.png")}
-            style={{ width: 40, height: 40 }}
-          />
-          <Image
-            source={require("../../assets/Microsoft_icone.png")}
-            style={{ width: 30, height: 30 }}
-          />
-        </View>
+        </TouchableOpacity>
       </Animatable.View>
-    </View>
+
+      <View style={styles.containerInput}>
+        <TextInput
+          label="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          mode="outlined"
+          autoCapitalize="none"
+          error={!email.includes("@") && email !== ""}
+          activeOutlineColor="#0c4499ff"
+        />
+        <TextInput
+          label="Senha"
+          value={senha}
+          onChangeText={setSenha}
+          mode="outlined"
+          autoCapitalize="none"
+          secureTextEntry={oculto}
+          right={
+            <TextInput.Icon
+              icon={oculto ? "eye-off" : "eye"}
+              onPress={() => setOculto(!oculto)}
+            />
+          }
+          activeOutlineColor="#0c4499ff"
+        />
+        <View style={styles.containerInputOutrasOpcoes}>
+          <View style={styles.lembrarDeMim}>
+            <Checkbox
+              color="#0c4499ff"
+              status={checked ? "checked" : "unchecked"}
+              onPress={() => setChecked(!checked)}
+            />
+            <Text>Lembrar de mim</Text>
+          </View>
+          <TouchableOpacity onPress={() => navigation.navigate("#")}>
+            <Text style={styles.link}>Esqueci minha senha</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity onPress={handleSubmit}>
+          <LinearGradient
+            colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.btnAcessar}
+          >
+            <Text style={styles.btnTextAcessar}>Acessar</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+    </Animatable.View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1179E8",
+    backgroundColor: "white",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    padding: 30,
   },
 
   header: {
+    width: "100%",
+    height: 50,
     position: "absolute",
     top: 20,
-    alignSelf: "center",
     fontSize: 28,
-    color: "white",
+    color: "dark-gray",
     fontWeight: "bold",
   },
 
-  containerForm: {
-    backgroundColor: "#FFF",
-    width: "80%",
-    height: 600,
-    padding: 30,
-    borderRadius: 15,
-    elevation: 5,
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "column",
+  botaoVoltar: {
+    width: 50,
+    height: 50,
+    borderRadius: "50%",
+    elevation: 10,
+    backgroundColor: "black",
   },
 
   containerInput: {
     justifyContent: "space-between",
-    height: 150,
+    height: 300,
+    width: "100%",
   },
 
   title: {
@@ -190,23 +160,40 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
 
+  containerInputOutrasOpcoes: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  lembrarDeMim: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
   btnAcessar: {
-    backgroundColor: "#1179E8",
-    height: 40,
-    borderRadius: 15,
+    height: 50,
+    width: "100%",
+    backgroundColor: "#013D7A",
+    borderRadius: 10,
+    alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
   },
 
   btnTextAcessar: {
     color: "white",
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: "bold",
   },
 
   link: {
     fontSize: 15,
-    color: "blue",
+    color: "#0c4499ff",
     textAlign: "center",
+  },
+  outrasOpcoes: {
+    height: 250,
+    justifyContent: "space-around",
   },
 });

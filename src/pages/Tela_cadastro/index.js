@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+
+import { TextInput, Button } from "react-native-paper";
 
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
@@ -13,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 
 export default function Signin() {
+  const [oculto, setOculto] = React.useState(true);
   const navigation = useNavigation();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -65,39 +62,44 @@ export default function Signin() {
         delay={300}
       >
         <View style={styles.containerInput}>
-          <Text style={styles.title}>Nome</Text>
           <TextInput
-            style={styles.input}
-            placeholder="username"
+            label="Nome"
             value={nome}
             onChangeText={setNome}
+            mode="outlined"
+            left={<TextInput.Icon icon="account" />}
+            activeOutlineColor="black"
           />
-        </View>
-        <View style={styles.containerInput}>
-          <Text style={styles.title}>Email</Text>
           <TextInput
-            style={styles.input}
-            placeholder="yourname@emai.com"
+            label="Email"
             value={email}
             onChangeText={setEmail}
+            keyboardType="email-address"
+            mode="outlined"
             autoCapitalize="none"
+            left={<TextInput.Icon icon="email" />}
+            error={!email.includes("@") && email !== ""}
+            activeOutlineColor="black"
           />
-        </View>
-
-        <View style={styles.containerInput}>
-          <Text style={styles.title}>Senha</Text>
           <TextInput
-            style={styles.input}
-            placeholder="password"
+            label="Senha"
             value={senha}
             onChangeText={setSenha}
+            mode="outlined"
             autoCapitalize="none"
-            secureTextEntry={true}
+            secureTextEntry={oculto}
+            right={
+              <TextInput.Icon
+                icon={oculto ? "eye-off" : "eye"}
+                onPress={() => setOculto(!oculto)}
+              />
+            }
+            left={<TextInput.Icon icon="lock" />}
+            activeOutlineColor="black"
           />
         </View>
-
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.link}>Já possui uma conta? Entrar</Text>
+          <Text style={styles.link}>Já tenho uma conta </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnAcessar} onPress={handleSubmit}>
@@ -128,16 +130,16 @@ const styles = StyleSheet.create({
   containerForm: {
     backgroundColor: "white",
     width: "80%",
-    height: 600,
+    height: 550,
     padding: 30,
-    borderRadius: 15,
+    borderRadius: 25,
     elevation: 5,
     justifyContent: "space-around",
   },
 
   containerInput: {
     justifyContent: "space-between",
-    height: 80,
+    height: 250,
   },
 
   title: {

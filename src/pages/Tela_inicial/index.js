@@ -45,16 +45,15 @@ export default function Welcome() {
         delay={0}
       />
 
-      <View style={styles.conatinerLogo}>
+      <View style={styles.containerLogo}>
         <Animatable.Image
           delay={600}
           animation={"fadeInUp"}
           source={require("../../assets/macawdemy-logo-asa-levantada.png")}
           style={{
             position: "absolute",
-            top: 0,
+            bottom: 0,
             height: 300,
-            backgroundColor: "transparent",
           }}
           resizeMode="contain"
         />
@@ -71,20 +70,20 @@ export default function Welcome() {
           ajudar a mandar bem nas provas com conteúdos dinâmicos, desafios e
           muito incentivo
         </Text>
-
-        <TouchableOpacity
-          style={styles.botaoEntrar}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={styles.buttonText}>Entrar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.botaoCadastrar}
-          onPress={() => navigation.navigate("Cadastro")}
-        >
-          <Text style={styles.buttonText}>Cadastrar</Text>
-        </TouchableOpacity>
+        <View style={styles.botoes}>
+          <TouchableOpacity
+            style={styles.botaoEntrar}
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text style={styles.buttonTextEntrar}>Entrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.botaoCadastrar}
+            onPress={() => navigation.navigate("Cadastro")}
+          >
+            <Text style={styles.buttonTextCadastrar}>Cadastrar</Text>
+          </TouchableOpacity>
+        </View>
       </Animatable.View>
     </LinearGradient>
   );
@@ -101,19 +100,21 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     marginTop: 150,
   },
-  conatinerLogo: {
-    height: 265,
-    justifyContent: "center",
+  containerLogo: {
+    height: "60%",
+    width: "100%",
     alignItems: "center",
-    marginTop: 250,
   },
   conatinerForm: {
-    height: 500,
+    height: "40%",
     backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
     padding: 30,
     alignContent: "center",
+    position: "absolute",
+    justifyContent: "flex-start",
+    bottom: 0,
   },
   title: {
     fontSize: 22,
@@ -127,31 +128,38 @@ const styles = StyleSheet.create({
     textAlign: "left",
     margin: 10,
   },
+  botoes: {
+    height: "50%",
+    justifyContent: "space-around",
+  },
   botaoEntrar: {
-    backgroundColor: "#FFC31C",
-    borderRadius: 30,
-    paddingVertical: 8,
-    width: "70%",
     height: 50,
+    width: "80%",
+    backgroundColor: "#013D7A",
+    borderRadius: 10,
     alignSelf: "center",
-    marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonText: {
-    fontSize: 18,
+  buttonTextEntrar: {
+    fontSize: 20,
     fontWeight: "bold",
     color: "#FFF",
   },
   botaoCadastrar: {
-    backgroundColor: "#1179E8",
-    borderRadius: 30,
-    paddingVertical: 8,
-    width: "70%",
     height: 50,
+    width: "80%",
+    backgroundColor: "white",
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "#013D7A",
     alignSelf: "center",
-    marginTop: 40,
     alignItems: "center",
     justifyContent: "center",
+  },
+  buttonTextCadastrar: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#013D7A",
   },
 });

@@ -5,6 +5,7 @@ import Cadastro from "../pages/Tela_cadastro";
 import Usuarios from "../pages/Usuarios";
 import Principal from "../pages/Tela_principal";
 import Perfil from "../pages/Tela_perfil_usuario";
+import TelaTeste from "../pages/Testes_de_componentes";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -41,6 +42,11 @@ export default function Routes() {
       <Stack.Screen
         name="Perfil"
         component={Perfil}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="TelaTeste"
+        component={TelaTeste}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

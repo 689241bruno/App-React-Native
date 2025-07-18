@@ -58,62 +58,117 @@ export default function Signin() {
           style={styles.botaoVoltar}
           onPress={() => navigation.navigate("Inicial")}
         >
-          <Text>
-            <MaterialIcons name="chevron_left" size={20} color="white" />
+          <Text style={{ textAlign: "center" }}>
+            <MaterialIcons name="arrow-back" size={40} color="black" />
           </Text>
         </TouchableOpacity>
       </Animatable.View>
-
-      <View style={styles.containerInput}>
-        <TextInput
-          label="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          mode="outlined"
-          autoCapitalize="none"
-          error={!email.includes("@") && email !== ""}
-          activeOutlineColor="#0c4499ff"
-        />
-        <TextInput
-          label="Senha"
-          value={senha}
-          onChangeText={setSenha}
-          mode="outlined"
-          autoCapitalize="none"
-          secureTextEntry={oculto}
-          right={
-            <TextInput.Icon
-              icon={oculto ? "eye-off" : "eye"}
-              onPress={() => setOculto(!oculto)}
-            />
-          }
-          activeOutlineColor="#0c4499ff"
-        />
-        <View style={styles.containerInputOutrasOpcoes}>
-          <View style={styles.lembrarDeMim}>
-            <Checkbox
-              color="#0c4499ff"
-              status={checked ? "checked" : "unchecked"}
-              onPress={() => setChecked(!checked)}
-            />
-            <Text>Lembrar de mim</Text>
+      <View
+        style={{
+          height: "60%",
+          width: "100%",
+          alignSelf: "center",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <View style={styles.containerInput}>
+          <TextInput
+            label="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            mode="outlined"
+            autoCapitalize="none"
+            error={!email.includes("@") && email !== ""}
+            activeOutlineColor="#0c4499ff"
+          />
+          <TextInput
+            label="Senha"
+            value={senha}
+            onChangeText={setSenha}
+            mode="outlined"
+            autoCapitalize="none"
+            secureTextEntry={oculto}
+            right={
+              <TextInput.Icon
+                icon={oculto ? "eye-off" : "eye"}
+                onPress={() => setOculto(!oculto)}
+              />
+            }
+            activeOutlineColor="#0c4499ff"
+          />
+          <View style={styles.containerInputOutrasOpcoes}>
+            <View style={styles.lembrarDeMim}>
+              <Checkbox
+                color="#0c4499ff"
+                status={checked ? "checked" : "unchecked"}
+                onPress={() => setChecked(!checked)}
+              />
+              <Text style={{ fontSize: 15 }}>Lembrar de mim</Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate("#")}>
+              <Text style={styles.link}>Esqueci minha senha</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("#")}>
-            <Text style={styles.link}>Esqueci minha senha</Text>
+
+          <TouchableOpacity onPress={handleSubmit}>
+            <LinearGradient
+              colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.btnAcessar}
+            >
+              <Text style={styles.btnTextAcessar}>Acessar</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
-
-        <TouchableOpacity onPress={handleSubmit}>
-          <LinearGradient
-            colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.btnAcessar}
+        <View style={styles.separacao}>
+          <View style={styles.linha}></View>
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: "bold",
+              color: "gray",
+              backgroundColor: "white",
+              padding: 10,
+            }}
           >
-            <Text style={styles.btnTextAcessar}>Acessar</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+            ou
+          </Text>
+          <View style={styles.linha}></View>
+        </View>
+
+        <View style={styles.opcoesLogin}>
+          <TouchableOpacity style={styles.botoesLogin}>
+            <Image
+              source={require("../../assets/Google_icone.png")}
+              style={styles.imageLogin}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botoesLogin}>
+            <Image
+              source={require("../../assets/Facebook_icone.png")}
+              style={styles.imageLogin}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.botoesLogin}>
+            <Image
+              source={require("../../assets/Microsoft_icone.png")}
+              style={styles.imageLogin}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.naoTemConta}>
+        <Text style={{ fontSize: 15 }}>
+          Não tem uma conta?
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate("Cadastro")}
+          >
+            Criar conta
+          </Text>
+        </Text>
       </View>
     </Animatable.View>
   );
@@ -124,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     padding: 30,
   },
 
@@ -139,11 +194,13 @@ const styles = StyleSheet.create({
   },
 
   botaoVoltar: {
+    marginTop: 30,
     width: 50,
     height: 50,
     borderRadius: "50%",
-    elevation: 10,
-    backgroundColor: "black",
+    elevation: 5,
+    backgroundColor: "white",
+    justifyContent: "center",
   },
 
   containerInput: {
@@ -192,8 +249,38 @@ const styles = StyleSheet.create({
     color: "#0c4499ff",
     textAlign: "center",
   },
-  outrasOpcoes: {
-    height: 250,
+  separacao: {
+    height: 80,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  linha: {
+    height: 3,
+    width: "45%",
+    backgroundColor: "gray",
+  },
+  opcoesLogin: {
+    height: 80,
+    width: "100%",
+    alignItems: "center",
     justifyContent: "space-around",
+    flexDirection: "row",
+  },
+  botoesLogin: {
+    height: 80,
+    width: "30%",
+    backgroundColor: "white",
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: "gray",
+    elevation: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imageLogin: {
+    height: 40,
+    width: 40,
   },
 });

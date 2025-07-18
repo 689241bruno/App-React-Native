@@ -12,7 +12,7 @@ import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import Cloud from "../../components/Nuvem.js";
-
+import { BlurView } from "expo-blur";
 export default function Welcome() {
   const navigation = useNavigation();
 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   conatinerForm: {
     height: "40%",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#ffffffb6",
     borderTopLeftRadius: 35,
     borderTopRightRadius: 35,
     padding: 30,

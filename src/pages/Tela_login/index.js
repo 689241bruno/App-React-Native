@@ -53,7 +53,11 @@ export default function Signin() {
       delay={300}
       style={styles.container}
     >
-      <Animatable.View animation={"fadeInUp"} delay={100} style={styles.header}>
+      <Animatable.View
+        animation={"fadeInLeft"}
+        delay={100}
+        style={styles.header}
+      >
         <TouchableOpacity
           style={styles.botaoVoltar}
           onPress={() => navigation.navigate("Inicial")}
@@ -63,6 +67,13 @@ export default function Signin() {
           </Text>
         </TouchableOpacity>
       </Animatable.View>
+      <View style={styles.h1}>
+        <Image
+          source={require("../../assets/login_image.png")}
+          resizeMode="contain"
+          style={{ height: "100%" }}
+        ></Image>
+      </View>
       <View
         style={{
           height: "60%",
@@ -139,24 +150,45 @@ export default function Signin() {
         </View>
 
         <View style={styles.opcoesLogin}>
-          <TouchableOpacity style={styles.botoesLogin}>
-            <Image
-              source={require("../../assets/Google_icone.png")}
-              style={styles.imageLogin}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botoesLogin}>
-            <Image
-              source={require("../../assets/Facebook_icone.png")}
-              style={styles.imageLogin}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botoesLogin}>
-            <Image
-              source={require("../../assets/Microsoft_icone.png")}
-              style={styles.imageLogin}
-            />
-          </TouchableOpacity>
+          <Animatable.View
+            style={styles.botoesLogin}
+            animation="fadeInUp"
+            duration={850}
+            delay={100}
+          >
+            <TouchableOpacity>
+              <Image
+                source={require("../../assets/Google_icone.png")}
+                style={styles.imageLogin}
+              />
+            </TouchableOpacity>
+          </Animatable.View>
+          <Animatable.View
+            style={styles.botoesLogin}
+            animation="fadeInUp"
+            duration={850}
+            delay={250}
+          >
+            <TouchableOpacity>
+              <Image
+                source={require("../../assets/Facebook_icone.png")}
+                style={styles.imageLogin}
+              />
+            </TouchableOpacity>
+          </Animatable.View>
+          <Animatable.View
+            style={styles.botoesLogin}
+            animation="fadeInUp"
+            duration={850}
+            delay={400}
+          >
+            <TouchableOpacity>
+              <Image
+                source={require("../../assets/Microsoft_icone.png")}
+                style={styles.imageLogin}
+              />
+            </TouchableOpacity>
+          </Animatable.View>
         </View>
       </View>
       <View style={styles.naoTemConta}>
@@ -180,7 +212,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "space-evenly",
-    padding: 30,
+    padding: 40,
   },
 
   header: {
@@ -189,18 +221,24 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     fontSize: 28,
-    color: "dark-gray",
     fontWeight: "bold",
+  },
+  h1: {
+    height: 90,
+    width: "65%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   botaoVoltar: {
-    marginTop: 30,
     width: 50,
     height: 50,
     borderRadius: "50%",
-    elevation: 5,
     backgroundColor: "white",
     justifyContent: "center",
+    position: "absolute",
+    top: 10,
+    left: 0,
   },
 
   containerInput: {

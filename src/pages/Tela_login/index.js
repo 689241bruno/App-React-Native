@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { TextInput, Button, Checkbox } from "react-native-paper";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Modal,
+  ImageBackground,
+} from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
+import { BlurView } from "expo-blur";
 
 import axios from "axios";
 
@@ -14,13 +23,14 @@ export default function Signin() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [modalVisivel, setModalVisivel] = useState(false);
 
   const handleSubmit = () => {
     const emailLimpo = email.trim().toLowerCase();
     const senhaLimpa = senha.trim();
 
     if (!emailLimpo || !senhaLimpa) {
-      alert("Preencha todos os campos corretamente.");
+      alert("Não deixe os campos vazios!");
       return;
     }
 
@@ -69,7 +79,7 @@ export default function Signin() {
       </Animatable.View>
       <View style={styles.h1}>
         <Image
-          source={require("../../assets/login_image.png")}
+          source={require("../../assets/Macawdemy_Letreiro.png")}
           resizeMode="contain"
           style={{ height: "100%" }}
         ></Image>
@@ -224,7 +234,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   h1: {
-    height: 90,
+    height: 110,
     width: "65%",
     alignItems: "center",
     justifyContent: "center",

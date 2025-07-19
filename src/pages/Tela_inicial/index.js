@@ -18,6 +18,7 @@ export default function Welcome() {
 
   return (
     <LinearGradient colors={["#67A4FF", "#E2EDFF"]} style={styles.conatiner}>
+      <BlurView style={{ flex: 1, position: "absolute" }}></BlurView>
       <Cloud
         top={130}
         size={200}

@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import { TextInput, Button, Checkbox } from "react-native-paper";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Modal,
-  ImageBackground,
-} from "react-native";
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { TextInput, Checkbox } from "react-native-paper";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
-import { BlurView } from "expo-blur";
 
 import axios from "axios";
 
@@ -23,7 +14,6 @@ export default function Signin() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [modalVisivel, setModalVisivel] = useState(false);
 
   const handleSubmit = () => {
     const emailLimpo = email.trim().toLowerCase();
@@ -127,7 +117,9 @@ export default function Signin() {
               />
               <Text style={{ fontSize: 15 }}>Lembrar de mim</Text>
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate("#")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("EsqueciSenha")}
+            >
               <Text style={styles.link}>Esqueci minha senha</Text>
             </TouchableOpacity>
           </View>

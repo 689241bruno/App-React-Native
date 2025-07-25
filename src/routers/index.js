@@ -6,6 +6,8 @@ import Usuarios from "../pages/Usuarios";
 import Principal from "../pages/Tela_principal";
 import Perfil from "../pages/Tela_perfil_usuario";
 import TelaTeste from "../pages/Testes_de_componentes";
+import EsqueciSenha from "../pages/Tela_login/Tela_esqueci_senha";
+import CodigoVerificacao from "../pages/Tela_login/Tela_esqueci_senha/Tela_codigo_verificacao";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -47,6 +49,16 @@ export default function Routes() {
       <Stack.Screen
         name="TelaTeste"
         component={TelaTeste}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EsqueciSenha"
+        component={EsqueciSenha}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CodigoVerificacao"
+        component={CodigoVerificacao}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

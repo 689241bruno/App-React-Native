@@ -5,50 +5,29 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
-import { BlurView } from "expo-blur";
 
 import axios from "axios";
 
 export default function Signin() {
-  const [oculto, setOculto] = React.useState(true);
   const navigation = useNavigation();
-  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
 
   const handleSubmit = () => {
     const emailLimpo = email.trim().toLowerCase();
-    const senhaLimpa = senha.trim();
-    const nomeLimpo = nome.trim();
 
-    if (!emailLimpo || !senhaLimpa || !nomeLimpo) {
-      alert("Preencha todos os campos corretamente.");
+    if (!emailLimpo) {
+      alert("Não deixe o campo vazio!");
       return;
     }
 
     if (!emailLimpo.includes("@") || !emailLimpo.includes(".")) {
       alert("Email inválido.");
       return;
+    } else {
+      alert("Código enviado!");
+      navigation.navigate("CodigoVerificacao");
+      return;
     }
-    axios
-      // API publicada no Railway - Banco de dados do Neon
-      .post("https://apirailway-production-07cc.up.railway.app/usuarios", {
-        nome: nomeLimpo,
-        email: emailLimpo,
-        senha: senhaLimpa,
-      })
-      .then((response) => {
-        console.log(response.data);
-        setNome("");
-        setEmail("");
-        setSenha("");
-        alert("Usuário Cadastrado!");
-        navigation.navigate("Login");
-      })
-      .catch((error) => {
-        console.error("Erro na API:", error);
-        alert("Algo deu erado!");
-      });
   };
 
   return (
@@ -64,7 +43,7 @@ export default function Signin() {
       >
         <TouchableOpacity
           style={styles.botaoVoltar}
-          onPress={() => navigation.navigate("Inicial")}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text style={{ textAlign: "center" }}>
             <MaterialIcons name="arrow-back" size={40} color="black" />
@@ -73,27 +52,27 @@ export default function Signin() {
       </Animatable.View>
       <View style={styles.h1}>
         <Image
-          source={require("../../assets/Macawdemy_Letreiro.png")}
+          source={require("../../../assets/Macawdemy_Letreiro.png")}
           resizeMode="contain"
           style={{ height: "100%" }}
         ></Image>
       </View>
       <View
         style={{
-          height: "50%",
+          height: "60%",
           width: "100%",
           alignSelf: "center",
-          justifyContent: "space-around",
+          justifyContent: "flex-start",
+          gap: 40,
         }}
       >
         <View style={styles.containerInput}>
-          <TextInput
-            label="Nome"
-            value={nome}
-            onChangeText={setNome}
-            mode="outlined"
-            activeOutlineColor="#0c4499ff"
-          />
+          <View style={styles.mensagem}>
+            <Text style={styles.mensagemText}>
+              Digite seu email corretamente para receber o código de
+              verificação.
+            </Text>
+          </View>
           <TextInput
             label="Email"
             value={email}
@@ -104,21 +83,6 @@ export default function Signin() {
             error={!email.includes("@") && email !== ""}
             activeOutlineColor="#0c4499ff"
           />
-          <TextInput
-            label="Senha"
-            value={senha}
-            onChangeText={setSenha}
-            mode="outlined"
-            autoCapitalize="none"
-            secureTextEntry={oculto}
-            right={
-              <TextInput.Icon
-                icon={oculto ? "eye-off" : "eye"}
-                onPress={() => setOculto(!oculto)}
-              />
-            }
-            activeOutlineColor="#0c4499ff"
-          />
         </View>
         <TouchableOpacity onPress={handleSubmit}>
           <LinearGradient
@@ -127,20 +91,11 @@ export default function Signin() {
             end={{ x: 1, y: 1 }}
             style={styles.btnAcessar}
           >
-            <Text style={styles.btnTextAcessar}>Cadastrar</Text>
+            <Text style={styles.btnTextAcessar} onPress={handleSubmit}>
+              Enviar
+            </Text>
           </LinearGradient>
         </TouchableOpacity>
-      </View>
-      <View style={styles.naoTemConta}>
-        <Text style={{ fontSize: 15 }}>
-          Já tem uma conta?
-          <Text
-            style={styles.link}
-            onPress={() => navigation.navigate("Login")}
-          >
-            Entrar
-          </Text>
-        </Text>
       </View>
     </Animatable.View>
   );
@@ -182,9 +137,22 @@ const styles = StyleSheet.create({
   },
 
   containerInput: {
-    justifyContent: "space-evenly",
-    height: "70%",
+    justifyContent: "center",
+    height: "40%",
     width: "100%",
+  },
+
+  mensagem: {
+    height: 80,
+    width: "100%",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+
+  mensagemText: {
+    fontSize: 16,
+    textAlign: "left",
+    color: "#444444ff",
   },
 
   title: {
@@ -193,17 +161,6 @@ const styles = StyleSheet.create({
 
   input: {
     borderBottomWidth: 1,
-  },
-
-  containerInputOutrasOpcoes: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  lembrarDeMim: {
-    flexDirection: "row",
-    alignItems: "center",
   },
 
   btnAcessar: {
@@ -220,45 +177,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     fontWeight: "bold",
-  },
-
-  link: {
-    fontSize: 15,
-    color: "#0c4499ff",
-    textAlign: "center",
-  },
-  separacao: {
-    height: 80,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  linha: {
-    height: 3,
-    width: "45%",
-    backgroundColor: "gray",
-  },
-  opcoesLogin: {
-    height: 80,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-around",
-    flexDirection: "row",
-  },
-  botoesLogin: {
-    height: 80,
-    width: "30%",
-    backgroundColor: "white",
-    borderRadius: 15,
-    borderWidth: 2,
-    borderColor: "gray",
-    elevation: 2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageLogin: {
-    height: 40,
-    width: 40,
   },
 });

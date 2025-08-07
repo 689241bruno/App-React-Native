@@ -158,7 +158,7 @@ export default function Signin() {
             duration={850}
             delay={100}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigation.navigate("TelaTeste")}>
               <Image
                 source={require("../../assets/Google_icone.png")}
                 style={styles.imageLogin}

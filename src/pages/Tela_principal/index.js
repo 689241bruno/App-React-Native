@@ -14,6 +14,7 @@ import * as Progress from "react-native-progress";
 import ContainerMateria from "../../components/containerMateria";
 import { useNavigation } from "@react-navigation/native";
 import * as Animatable from "react-native-animatable";
+import MenuBar from "../../components/MenuBar";
 
 import Constants from "expo-constants";
 
@@ -101,6 +102,7 @@ export default function Home() {
         <ContainerMateria titulo="Redação" progress={0.4} nomeImage="Redação" />
         <View style={styles.footer}></View>
       </ScrollView>
+      <MenuBar></MenuBar>
     </SafeAreaView>
   );
 }
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
+    marginTop: 10,
     height: 60,
     backgroundColor: "#FFF",
     flexDirection: "row",
@@ -139,6 +142,7 @@ const styles = StyleSheet.create({
   main: {
     padding: 30,
     paddingTop: 60,
+    marginBottom: 60,
     display: "flex",
     flexDirection: "column",
   },

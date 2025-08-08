@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     elevation: 5,
-    backgroundColor: "white",
+    backgroundColor: "#fafafaff",
   },
   tituloMateria: {
     fontSize: 23,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 14,
     height: "70%",
     borderBottomWidth: 2,
-    backgroundColor: "#FFF",
+    backgroundColor: "#fafafaff",
     borderColor: "gray",
     padding: 10,
     display: "flex",

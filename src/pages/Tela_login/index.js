@@ -76,11 +76,10 @@ export default function Signin() {
       <View style={styles.conteudo}>
         <View
           style={{
-            height: "100%",
+            height: "90%",
             width: "100%",
-            justifyContent: "space-around",
-            padding: 20,
-            backgroundColor: "green"
+            justifyContent: "space-evenly",
+
           }}
         >
           <View style={styles.containerInput}>
@@ -245,19 +244,18 @@ const styles = StyleSheet.create({
   },
 
   conteudo:{
-    height: "60%",
+    height: "70%",
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: 40,
-    paddingRight: 40,
-    backgroundColor: "gray"
+    paddingLeft: 20,
+    paddingRight: 20,
+    padding: 20,
   },
 
   containerInput: {
-    height: "80%",
+    height: "50%",
     justifyContent: "space-between",
-    backgroundColor:"red"
   },
 
   input: {
@@ -303,7 +301,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-            backgroundColor:"blue"
   },
   linha: {
     height: 3,
@@ -317,8 +314,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "space-around",
     flexDirection: "row",
-            backgroundColor:"green"
-
   },
   botoesLogin: {
     height: 80,

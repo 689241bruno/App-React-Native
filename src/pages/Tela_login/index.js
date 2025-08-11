@@ -58,9 +58,7 @@ export default function Signin() {
         delay={100}
         style={styles.header}
       >
-        <TouchableOpacity
-          style={styles.botaoVoltar}
-        >
+        <TouchableOpacity style={styles.botaoVoltar}>
           <Text style={{ textAlign: "center" }}>
             <MaterialIcons name="arrow-back" size={40} color="black" />
           </Text>
@@ -79,50 +77,49 @@ export default function Signin() {
             height: "90%",
             width: "100%",
             justifyContent: "space-evenly",
-
           }}
         >
           <View style={styles.containerInput}>
             <TextInput
-            label="Email"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            mode="outlined"
-            autoCapitalize="none"
-            error={!email.includes("@") && email !== ""}
-            activeOutlineColor="#0c4499ff"
-          />
-          <TextInput
-            label="Senha"
-            value={senha}
-            onChangeText={setSenha}
-            mode="outlined"
-            autoCapitalize="none"
-            secureTextEntry={oculto}
-            right={
-              <TextInput.Icon
-                icon={oculto ? "eye-off" : "eye"}
-                onPress={() => setOculto(!oculto)}
-              />
-            }
-            activeOutlineColor="#0c4499ff"
-          />
-          <View style={styles.containerInputOutrasOpcoes}>
-            <View style={styles.lembrarDeMim}>
-              <Checkbox
-                color="#0c4499ff"
-                status={checked ? "checked" : "unchecked"}
-                onPress={() => setChecked(!checked)}
-              />
-              <Text style={{ fontSize: 15 }}>Lembrar de mim</Text>
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              mode="outlined"
+              autoCapitalize="none"
+              error={!email.includes("@") && email !== ""}
+              activeOutlineColor="#0c4499ff"
+            />
+            <TextInput
+              label="Senha"
+              value={senha}
+              onChangeText={setSenha}
+              mode="outlined"
+              autoCapitalize="none"
+              secureTextEntry={oculto}
+              right={
+                <TextInput.Icon
+                  icon={oculto ? "eye-off" : "eye"}
+                  onPress={() => setOculto(!oculto)}
+                />
+              }
+              activeOutlineColor="#0c4499ff"
+            />
+            <View style={styles.containerInputOutrasOpcoes}>
+              <View style={styles.lembrarDeMim}>
+                <Checkbox
+                  color="#0c4499ff"
+                  status={checked ? "checked" : "unchecked"}
+                  onPress={() => setChecked(!checked)}
+                />
+                <Text style={{ fontSize: 15 }}>Lembrar de mim</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("EsqueciSenha")}
+              >
+                <Text style={styles.link}>Esqueci minha senha</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("EsqueciSenha")}
-            >
-              <Text style={styles.link}>Esqueci minha senha</Text>
-            </TouchableOpacity>
-          </View>
             <TouchableOpacity onPress={handleSubmit}>
               <LinearGradient
                 colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
@@ -150,46 +147,47 @@ export default function Signin() {
             <View style={styles.linha}></View>
           </View>
 
-        <View style={styles.opcoesLogin}>
-          <Animatable.View
-            style={styles.botoesLogin}
-            animation="fadeInUp"
-            duration={850}
-            delay={100}
-          >
-            <TouchableOpacity onPress={navigation.navigate("Principal")}>
-              <Image
-                source={require("../../assets/Google_icone.png")}
-                style={styles.imageLogin}
-              />
-            </TouchableOpacity>
-          </Animatable.View>
-          <Animatable.View
-            style={styles.botoesLogin}
-            animation="fadeInUp"
-            duration={850}
-            delay={250}
-          >
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/Facebook_icone.png")}
-                style={styles.imageLogin}
-              />
-            </TouchableOpacity>
-          </Animatable.View>
-          <Animatable.View
-            style={styles.botoesLogin}
-            animation="fadeInUp"
-            duration={850}
-            delay={400}
-          >
-            <TouchableOpacity>
-              <Image
-                source={require("../../assets/Microsoft_icone.png")}
-                style={styles.imageLogin}
-              />
-            </TouchableOpacity>
-          </Animatable.View>
+          <View style={styles.opcoesLogin}>
+            <Animatable.View
+              style={styles.botoesLogin}
+              animation="fadeInUp"
+              duration={850}
+              delay={100}
+            >
+              <TouchableOpacity onPress={navigation.navigate("Principal")}>
+                <Image
+                  source={require("../../assets/Google_icone.png")}
+                  style={styles.imageLogin}
+                />
+              </TouchableOpacity>
+            </Animatable.View>
+            <Animatable.View
+              style={styles.botoesLogin}
+              animation="fadeInUp"
+              duration={850}
+              delay={250}
+            >
+              <TouchableOpacity>
+                <Image
+                  source={require("../../assets/Facebook_icone.png")}
+                  style={styles.imageLogin}
+                />
+              </TouchableOpacity>
+            </Animatable.View>
+            <Animatable.View
+              style={styles.botoesLogin}
+              animation="fadeInUp"
+              duration={850}
+              delay={400}
+            >
+              <TouchableOpacity>
+                <Image
+                  source={require("../../assets/Microsoft_icone.png")}
+                  style={styles.imageLogin}
+                />
+              </TouchableOpacity>
+            </Animatable.View>
+          </View>
         </View>
       </View>
       <View style={styles.naoTemConta}>
@@ -225,11 +223,11 @@ const styles = StyleSheet.create({
   },
   h1: {
     width: "70%",
-    alignItems: "center", 
+    alignItems: "center",
   },
 
-  imagehH1:{
-    width: "100%"
+  imagehH1: {
+    width: "100%",
   },
 
   botaoVoltar: {
@@ -242,7 +240,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 
-  conteudo:{
+  conteudo: {
     height: "70%",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -280,7 +278,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
-
   },
 
   btnTextAcessar: {

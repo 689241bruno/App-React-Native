@@ -60,7 +60,6 @@ export default function Signin() {
       >
         <TouchableOpacity
           style={styles.botaoVoltar}
-          onPress={() => navigation.navigate("Inicial")}
         >
           <Text style={{ textAlign: "center" }}>
             <MaterialIcons name="arrow-back" size={40} color="black" />
@@ -71,19 +70,20 @@ export default function Signin() {
         <Image
           source={require("../../assets/Macawdemy_Letreiro.png")}
           resizeMode="contain"
-          style={{ height: "100%" }}
+          style={styles.imagehH1}
         ></Image>
       </View>
-      <View
-        style={{
-          height: "60%",
-          width: "100%",
-          alignSelf: "center",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <View style={styles.containerInput}>
-          <TextInput
+      <View style={styles.conteudo}>
+        <View
+          style={{
+            height: "90%",
+            width: "100%",
+            justifyContent: "space-evenly",
+
+          }}
+        >
+          <View style={styles.containerInput}>
+            <TextInput
             label="Email"
             value={email}
             onChangeText={setEmail}
@@ -123,33 +123,32 @@ export default function Signin() {
               <Text style={styles.link}>Esqueci minha senha</Text>
             </TouchableOpacity>
           </View>
-
-          <TouchableOpacity onPress={handleSubmit}>
-            <LinearGradient
-              colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={styles.btnAcessar}
+            <TouchableOpacity onPress={handleSubmit}>
+              <LinearGradient
+                colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.btnAcessar}
+              >
+                <Text style={styles.btnTextAcessar}>Acessar</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.separacao}>
+            <View style={styles.linha}></View>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "gray",
+                backgroundColor: "white",
+                padding: 10,
+              }}
             >
-              <Text style={styles.btnTextAcessar}>Acessar</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.separacao}>
-          <View style={styles.linha}></View>
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "gray",
-              backgroundColor: "white",
-              padding: 10,
-            }}
-          >
-            ou
-          </Text>
-          <View style={styles.linha}></View>
-        </View>
+              ou
+            </Text>
+            <View style={styles.linha}></View>
+          </View>
 
         <View style={styles.opcoesLogin}>
           <Animatable.View
@@ -158,7 +157,7 @@ export default function Signin() {
             duration={850}
             delay={100}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigation.navigate("Principal")}>
               <Image
                 source={require("../../assets/Google_icone.png")}
                 style={styles.imageLogin}
@@ -214,7 +213,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "space-evenly",
-    padding: 40,
   },
 
   header: {
@@ -226,31 +224,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   h1: {
-    height: 110,
-    width: "65%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "70%",
+    alignItems: "center", 
+  },
+
+  imagehH1:{
+    width: "100%"
   },
 
   botaoVoltar: {
     width: 50,
     height: 50,
     borderRadius: "50%",
-    backgroundColor: "white",
     justifyContent: "center",
     position: "absolute",
-    top: 10,
-    left: 0,
+    marginTop: 20,
+    marginLeft: 10,
+  },
+
+  conteudo:{
+    height: "70%",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingLeft: 20,
+    paddingRight: 20,
+    padding: 20,
   },
 
   containerInput: {
+    height: "50%",
     justifyContent: "space-between",
-    height: 300,
-    width: "100%",
-  },
-
-  title: {
-    fontSize: 17,
   },
 
   input: {
@@ -276,6 +280,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
+
   },
 
   btnTextAcessar: {
@@ -305,6 +310,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: "100%",
     alignItems: "center",
+    alignSelf: "center",
     justifyContent: "space-around",
     flexDirection: "row",
   },

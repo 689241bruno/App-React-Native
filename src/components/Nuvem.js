@@ -3,7 +3,7 @@ import { Animated, Image, Dimensions } from "react-native";
 import { Easing } from "react-native";
 
 const { width } = Dimensions.get("window");
-
+// Deus o tenha'
 export default function Cloud({
   top,
   size,

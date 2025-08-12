@@ -16,7 +16,7 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const handleSubmit = () => {
+  const cadastrarUsuario = () => {
     const emailLimpo = email.trim().toLowerCase();
     const senhaLimpa = senha.trim();
     const nomeLimpo = nome.trim();
@@ -32,7 +32,7 @@ export default function Signin() {
     }
     axios
       // API publicada no Railway - Banco de dados do Neon
-      .post("https://apirailway-production-07cc.up.railway.app/usuarios", {
+      .post("https://api-postgre-lk9v.onrender.com/usuarios", {
         nome: nomeLimpo,
         email: emailLimpo,
         senha: senhaLimpa,
@@ -120,7 +120,7 @@ export default function Signin() {
             activeOutlineColor="#0c4499ff"
           />
         </View>
-        <TouchableOpacity onPress={handleSubmit}>
+        <TouchableOpacity onPress={cadastrarUsuario}>
           <LinearGradient
             colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
             start={{ x: 0, y: 0 }}

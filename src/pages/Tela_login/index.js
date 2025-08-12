@@ -15,7 +15,7 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const handleSubmit = () => {
+  const loginUsuario = () => {
     const emailLimpo = email.trim().toLowerCase();
     const senhaLimpa = senha.trim();
 
@@ -120,7 +120,7 @@ export default function Signin() {
                 <Text style={styles.link}>Esqueci minha senha</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={handleSubmit}>
+            <TouchableOpacity onPress={loginUsuario}>
               <LinearGradient
                 colors={["#0c4499ff", "#51bcd6ff", "#239fbeff"]}
                 start={{ x: 0, y: 0 }}

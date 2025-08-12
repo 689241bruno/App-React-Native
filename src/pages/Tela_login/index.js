@@ -29,8 +29,8 @@ export default function Signin() {
       return;
     }
     axios
-      // API publicada no Railway - Banco de dados do Neon
-      .post("https://apirailway-production-07cc.up.railway.app/login", {
+      // API publicada no Render (conta -> "anonimodark712") - Banco de dados do Neon
+      .post("https://api-postgre-lk9v.onrender.com/login", {
         email: emailLimpo,
         senha: senhaLimpa,
       })
@@ -154,7 +154,7 @@ export default function Signin() {
               duration={850}
               delay={100}
             >
-              <TouchableOpacity onPress={navigation.navigate("Principal")}>
+              <TouchableOpacity>
                 <Image
                   source={require("../../assets/Google_icone.png")}
                   style={styles.imageLogin}
